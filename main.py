@@ -1,7 +1,10 @@
 import pyarrow as pa
-from src import HackerNewsClient, DaoParquet
+
 import schedule
 import time
+
+from hacker_news import HackerNewsClient, DaoParquet
+
 
 story_type = "newstories"
 parquet_data_folder = 'data'
@@ -47,7 +50,7 @@ if __name__ == '__main__':
     
     # Run main every day at 4:00 AM (as up to 500 requests can be fired almost at once and this should thus not happen at a busy time for the server)
     # schedule.every().day.at("04:00").do(main)
-    schedule.every(1).minutes.do(main)
+    schedule.every(1).minutes.do(main) # For testing purposes
 
     while True:
         schedule.run_pending()
