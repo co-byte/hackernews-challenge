@@ -1,0 +1,41 @@
+@startuml class_diagram
+
+class HackerNewsClient {
+    - base_url: str
+    - endpoint: str
+    - previous_items: set[int]
+    ---
+    - fetch_item_ids(count: int|None)
+    - fetch_item_by_id(item_id: int)
+    ---
+    + constructor(endpoint: str)
+    + fetch_items(count: int|None)
+}
+
+class DaoParquet {
+    - parquet_folder: str
+    - base_filename: str
+    - schema: pa.schema
+    - counter: int
+    ---
+    - format_data(data: list[dict]): list[dict]
+    - clean_data(data: list[dict])
+    - create_table(data: dict)
+    - write_table(table: pa.Table)
+    - parquet_folder_exists(file_location)
+    ---
+    + constructor(parquet_folder: str, parquet_base_filename: str, schema: pa.schema)
+    + save_data(data: list[dict])
+}
+
+class Main {
+    - client: HackerNewsClient
+    - dao: DaoParquet
+    ---
+    + main()
+}
+
+Main  --  HackerNewsClient
+Main  --  DaoParquet
+
+@enduml
