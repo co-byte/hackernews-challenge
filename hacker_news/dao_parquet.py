@@ -45,3 +45,4 @@ class DaoParquet():
     @staticmethod
     def __parquet_folder_exists( file_location):
         return os.path.exists(file_location)
+    
