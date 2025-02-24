@@ -5,7 +5,7 @@ This Python script was completed as part of a challenge I completed this year. I
 ## Challenge Details
 
 - **Task**:
-  - Write a python script that extracts information from the [Hacker News API](https://github.com/HackerNews/API) and saves the data as parquet files on your local machine.
+  - Write a Python script that extracts information from the [Hacker News API](https://github.com/HackerNews/API) and saves the data as parquet files on your local machine.
 
 - **Bonus challenges**:
   - Don’t use pandas.
@@ -29,7 +29,7 @@ As the API does not allow multiple objects to be fetched in a single request, I 
 
 ### `dao_parquet.py`
 
-- This (Data Acess Object) class handles the saving of fetched items into Parquet files. It offers a single "public" method, which in turn makes use of multiple "private" methods to handle the actual operations.
+- This Data Access Object (DAO) class handles the saving of fetched items into Parquet files. It offers a single "public" method, which in turn makes use of multiple "private" methods to handle the actual operations.
 
 - To manage the size of the Parquet files, I chose to create a new file every time new data is saved. Initially, I implemented this by maintaining a simple counter, with the current count appended to the filename of the new file. However, considering the script's daily execution, simply appending the current date to the filename would have been a better approach.
 
